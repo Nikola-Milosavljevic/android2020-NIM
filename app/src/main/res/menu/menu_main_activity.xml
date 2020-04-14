@@ -7,8 +7,8 @@
         android:title="@string/menu_settings"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/menu_item_backgound_color"
-        android:title="@string/menu_backgound_color"
+        android:id="@+id/menu_item_background_color"
+        android:title="@string/menu_background_color"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/menu_item_increase_font"

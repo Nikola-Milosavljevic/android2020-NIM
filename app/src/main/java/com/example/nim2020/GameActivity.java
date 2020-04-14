@@ -27,22 +27,22 @@ public class GameActivity extends AppCompatActivity {
     private int onTheMove;
     private int rb_selected_id;
 
-    TextView textView;
-    EditText editText;
-    RadioButton rb1;
-    RadioButton rb2;
-    RadioButton rb3;
-    Button button;
+    private TextView textView;
+    private EditText editText;
+    private RadioButton rb1;
+    private RadioButton rb2;
+    private RadioButton rb3;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        textView = (TextView) findViewById(R.id.text_view_on_the_move);
-        editText = (EditText) findViewById(R.id.edit_text_take_val);
+        textView = findViewById(R.id.text_view_on_the_move);
+        editText = findViewById(R.id.edit_text_take_val);
 
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group_piles);
+        RadioGroup radioGroup = findViewById(R.id.radio_group_piles);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -50,11 +50,11 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        rb1 = (RadioButton) findViewById(R.id.radio_button_1);
-        rb2 = (RadioButton) findViewById(R.id.radio_button_2);
-        rb3 = (RadioButton) findViewById(R.id.radio_button_3);
+        rb1 = findViewById(R.id.radio_button_1);
+        rb2 = findViewById(R.id.radio_button_2);
+        rb3 = findViewById(R.id.radio_button_3);
 
-        button = (Button) findViewById(R.id.button_play);
+        button = findViewById(R.id.button_play);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +101,7 @@ public class GameActivity extends AppCompatActivity {
 
         int removed;
         try {
-            removed = Integer.valueOf(editText.getText().toString());
+            removed = Integer.parseInt(editText.getText().toString());
         } catch (Exception e) {
             Toast.makeText(this, getString(R.string.enter_valid_number), Toast.LENGTH_SHORT).show();
             return;
@@ -158,31 +158,30 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_item_hint:
-                if (!isChecked)
-                    return super.onOptionsItemSelected(item);
-                int sum = pile1 ^ pile2 ^ pile3;
-                if (sum == 0) {
-                    Toast.makeText(this, ":(", Toast.LENGTH_LONG).show();
-                    return true;
-                }
-                int p1 = pile1 ^ sum, p2 = pile2 ^ sum, p3 = pile3 ^ sum;
-                if (p1 < pile1) {
-                    Toast.makeText(this, 1 + ": " + (pile1 - p1), Toast.LENGTH_LONG).show();
-                    return true;
-                }
-                if (p2 < pile2) {
-                    Toast.makeText(this, 2 + ": " + (pile2 - p2), Toast.LENGTH_LONG).show();
-                    return true;
-                }
-                if (p3 < pile3) {
-                    Toast.makeText(this, 3 + ": " + (pile3 - p3), Toast.LENGTH_LONG).show();
-                    return true;
-                }
-                return true;
-            default:
+        if (item.getItemId() == R.id.menu_item_hint) {
+            if (!isChecked)
                 return super.onOptionsItemSelected(item);
+            int sum = pile1 ^ pile2 ^ pile3;
+            if (sum == 0) {
+                Toast.makeText(this, ":(", Toast.LENGTH_LONG).show();
+                return true;
+            }
+            int p1 = pile1 ^ sum, p2 = pile2 ^ sum, p3 = pile3 ^ sum;
+            if (p1 < pile1) {
+                Toast.makeText(this, 1 + ": " + (pile1 - p1), Toast.LENGTH_LONG).show();
+                return true;
+            }
+            if (p2 < pile2) {
+                Toast.makeText(this, 2 + ": " + (pile2 - p2), Toast.LENGTH_LONG).show();
+                return true;
+            }
+            if (p3 < pile3) {
+                Toast.makeText(this, 3 + ": " + (pile3 - p3), Toast.LENGTH_LONG).show();
+                return true;
+            }
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
 
     }

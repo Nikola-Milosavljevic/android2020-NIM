@@ -24,6 +24,6 @@
     <string name="enter_valid_number">Unesite validan broj</string>
     <string name="cant_take_this_much">Ne možete uzeti toliko</string>
     <string name="wins">je pobedio!</string>
-    <string name="menu_backgound_color">Boja pozadine</string>
+    <string name="menu_background_color">Boja pozadine</string>
     <string name="menu_item_hint">Hint</string>
 </resources>

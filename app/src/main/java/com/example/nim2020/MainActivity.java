@@ -5,35 +5,22 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Type;
-import java.nio.file.Files;
-import java.util.logging.Logger;
-
 public class MainActivity extends AppCompatActivity {
-
-    public static final int PLAYER_INFO_REQUEST_CODE = 1;
 
     public static final String PLAYER_1_NAME = "player_1_name";
     public static final String PLAYER_2_NAME = "player_2_name";
@@ -42,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String PILE_3_SIZE = "pile_3_size";
     public static final String CHECKBOX_STATUS = "checkbox_status";
 
+    private static final int PLAYER_INFO_REQUEST_CODE = 1;
+
     private int currBackgroundColor = 0;
 
     @Override
@@ -49,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button addPlayersButton = (Button) findViewById(R.id.button_add_players);
+        Button addPlayersButton = findViewById(R.id.button_add_players);
         addPlayersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button startGameButton = (Button) findViewById(R.id.button_start_game);
+        Button startGameButton = findViewById(R.id.button_start_game);
         startGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,30 +54,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TextView textView = (TextView) findViewById(R.id.text_view_game_name);
+        TextView textView = findViewById(R.id.text_view_game_name);
         registerForContextMenu(textView);
     }
 
     private void startGameActivity() {
-        TextView player1 = (TextView) findViewById(R.id.p1_name);
-        TextView player2 = (TextView) findViewById(R.id.p2_name);
-        EditText p1 = (EditText) findViewById(R.id.pile_1);
-        EditText p2 = (EditText) findViewById(R.id.pile_2);
-        EditText p3 = (EditText) findViewById(R.id.pile_3);
-        CheckBox ch = (CheckBox) findViewById(R.id.checkbox_hint);
+        TextView player1 = findViewById(R.id.p1_name);
+        TextView player2 = findViewById(R.id.p2_name);
+        EditText p1 = findViewById(R.id.pile_1);
+        EditText p2 = findViewById(R.id.pile_2);
+        EditText p3 = findViewById(R.id.pile_3);
+        CheckBox ch = findViewById(R.id.checkbox_hint);
 
         String name1 = player1.getText().toString();
         String name2 = player2.getText().toString();
-        if (name1 == null || name1.isEmpty() || name2 == null || name2.isEmpty()) {
+        if (name1.isEmpty() || name2.isEmpty()) {
             Toast.makeText(this, getString(R.string.enter_player_name), Toast.LENGTH_SHORT).show();
             return;
         }
 
         int pile1, pile2, pile3;
         try {
-            pile1 = Integer.valueOf(p1.getText().toString());
-            pile2 = Integer.valueOf(p2.getText().toString());
-            pile3 = Integer.valueOf(p3.getText().toString());
+            pile1 = Integer.parseInt(p1.getText().toString());
+            pile2 = Integer.parseInt(p2.getText().toString());
+            pile3 = Integer.parseInt(p3.getText().toString());
         } catch (Exception e) {
             Toast.makeText(this, getString(R.string.wrong_pile_size), Toast.LENGTH_SHORT).show();
             return;
@@ -118,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
                     String player1name = data.getStringExtra(PlayerInfoActivity.PLAYER_1_NAME);
                     String player2name = data.getStringExtra(PlayerInfoActivity.PLAYER_2_NAME);
 
-                    TextView p1 = (TextView) findViewById(R.id.p1_name);
-                    TextView p2 = (TextView) findViewById(R.id.p2_name);
+                    TextView p1 = findViewById(R.id.p1_name);
+                    TextView p2 = findViewById(R.id.p2_name);
                     p1.setText(player1name);
                     p2.setText(player2name);
 
@@ -137,12 +126,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        TextView textView = (TextView) findViewById(R.id.text_view_game_name);
+        TextView textView = findViewById(R.id.text_view_game_name);
         switch (item.getItemId()) {
             case R.id.menu_item_settings:
                 Toast.makeText(this, R.string.menu_settings, Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.menu_item_backgound_color: // menjamo pozadinu izmedju crvene i zelene i default
+            case R.id.menu_item_background_color: // menjamo pozadinu izmedju crvene i zelene i default
                 TypedValue val = new TypedValue();
                 getTheme().resolveAttribute(android.R.attr.windowBackground, val, true);
                 int color = val.data;
@@ -154,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
                     color = Color.GREEN;
                 findViewById(android.R.id.content).setBackgroundColor(color);
                 return true;
+
             case R.id.menu_item_increase_font:
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textView.getTextSize() + 1);
                 return true;
@@ -174,8 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        TextView textView = (TextView) findViewById(R.id.text_view_game_name);
+        TextView textView = findViewById(R.id.text_view_game_name);
 
         switch (item.getItemId()) {
             case R.id.menu_item_increase_font:

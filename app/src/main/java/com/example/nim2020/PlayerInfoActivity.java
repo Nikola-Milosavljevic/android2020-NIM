@@ -20,7 +20,7 @@ public class PlayerInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_info);
 
-        Button button = (Button) findViewById(R.id.button_ok_players);
+        Button button = findViewById(R.id.button_ok_players);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,8 +31,8 @@ public class PlayerInfoActivity extends AppCompatActivity {
     }
 
     private void sendPlayerInfo() {
-        EditText editText1 = (EditText) findViewById(R.id.edit_text_player1_name);
-        EditText editText2 = (EditText) findViewById(R.id.edit_text_player2_name);
+        EditText editText1 = findViewById(R.id.edit_text_player1_name);
+        EditText editText2 = findViewById(R.id.edit_text_player2_name);
 
         String s1 = editText1.getText().toString();
         String s2 = editText2.getText().toString();

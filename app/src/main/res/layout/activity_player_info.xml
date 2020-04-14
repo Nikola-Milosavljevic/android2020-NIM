@@ -9,11 +9,13 @@
 
     <EditText
         android:id="@+id/edit_text_player1_name"
+        android:inputType="textPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/edit_text_player2_name"
+        android:inputType="textPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
