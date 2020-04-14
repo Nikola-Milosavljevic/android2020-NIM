@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">НИМ2020</string>
+    <string name="game_name">Хајде да играмо НИМ</string>
+    <string name="first_player_name">Iме првог играча:</string>
+    <string name="second_player_name">Име другог играча:</string>
+    <string name="button_add_players">Додај играче</string>
+    <string name="pile_1_size">Величина гомиле 1:</string>
+    <string name="pile_2_size">Величина гомиле 2:</string>
+    <string name="pile_3_size">Величина гомиле 3:</string>
+    <string name="checkbox_hint">Дозволи хинт?</string>
+    <string name="button_start_game">ПОЧНИ ИГРУ</string>
+    <string name="button_ok">ОК</string>
+    <string name="invalid_name">Име не може бити празно</string>
+    <string name="menu_settings">Подешавања</string>
+    <string name="menu_increase_font">Повећај фонт</string>
+    <string name="menu_decrease_font">Смањи фонт</string>
+    <string name="hint_take_val">Количина коју узимате</string>
+    <string name="button_play">ОДИГРАЈ</string>
+    <string name="enter_player_name">Унесите назив играча</string>
+    <string name="wrong_pile_size">Погрешна величина гомиле</string>
+    <string name="game_over">Игра је завршена</string>
+    <string name="on_the_move">На потезу:</string>
+    <string name="enter_valid_number">Унесите валидан број</string>
+    <string name="cant_take_this_much">Не можете узети толико</string>
+    <string name="wins">је победио!</string>
+    <string name="menu_backgound_color">Боја позадине</string>
+    <string name="menu_item_hint">Хинт</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NIM2020</string>
+    <string name="game_name">Hajde da igramo NIM</string>
+    <string name="first_player_name">Ime prvog igrača:</string>
+    <string name="second_player_name">Ime drugog igrača:</string>
+    <string name="button_add_players">Dodaj igrače</string>
+    <string name="pile_1_size">Veličina gomile 1:</string>
+    <string name="pile_2_size">Veličina gomile 2:</string>
+    <string name="pile_3_size">Veličina gomile 3:</string>
+    <string name="checkbox_hint">Dozvoli hint?</string>
+    <string name="button_start_game">POČNI IGRU</string>
+    <string name="button_ok">OK</string>
+    <string name="invalid_name">Ime ne može biti prazno</string>
+    <string name="menu_settings">Podešavanja</string>
+    <string name="menu_increase_font">Povećaj font</string>
+    <string name="menu_decrease_font">Smanji font</string>
+    <string name="hint_take_val">Količina koju uzimate</string>
+    <string name="button_play">ODIGRAJ</string>
+    <string name="enter_player_name">Unesite naziv igrača</string>
+    <string name="wrong_pile_size">Pogrešna veličina gomile</string>
+    <string name="game_over">Igra je završena</string>
+    <string name="on_the_move">Na potezu:</string>
+    <string name="enter_valid_number">Unesite validan broj</string>
+    <string name="cant_take_this_much">Ne možete uzeti toliko</string>
+    <string name="wins">je pobedio!</string>
+    <string name="menu_backgound_color">Boja pozadine</string>
+    <string name="menu_item_hint">Hint</string>
+</resources>
